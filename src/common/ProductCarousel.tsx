@@ -57,14 +57,14 @@ export default function ProductCarousel({
           <div className="flex gap-x-3 m-2">
             <button
               onClick={scrollPrev}
-              className="absolute right-14 bottom-2 transform -translate-y-1/2 bg-[#E40046] text-white p-1 rounded-full hover:bg-[#E40046]"
+              className="absolute right-14 bottom-2 transform -translate-y-1/2 bg-[#004AAC] text-white p-1 rounded-full hover:bg-[#004AAC]"
               aria-label="Previous"
             >
               <ArrowLeft />
             </button>
             <button
               onClick={scrollNext}
-              className="absolute right-2 bottom-2 transform -translate-y-1/2 bg-[#E40046] text-white p-1 rounded-full hover:bg-[#E40046]"
+              className="absolute right-2 bottom-2 transform -translate-y-1/2 bg-[#004AAC] text-white p-1 rounded-full hover:bg-[#004AAC]"
               aria-label="Next"
             >
               <ArrowRight />

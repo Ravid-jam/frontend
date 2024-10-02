@@ -28,7 +28,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky bg-[#E40046] top-0 z-50 w-full border-b px-3 sm:px-5">
+    <header className="sticky bg-[#004AAC] top-0 z-50 w-full border-b px-3 sm:px-5">
       <div className="h-16 flex justify-between items-center">
         <div className="flex-1">
           <Navbar />

@@ -83,14 +83,14 @@ export default function Hero({ autoplayInterval = 6000 }: EmblaCarouselProps) {
         <div className="flex gap-x-3 m-2">
           <button
             onClick={scrollPrev}
-            className="absolute left-4 bottom-0 transform -translate-y-1/2 bg-[#E40046] text-white p-2 rounded-full hover:bg-[#E40046]"
+            className="absolute left-4 bottom-0 transform -translate-y-1/2 bg-[#004AAC] text-white p-2 rounded-full hover:bg-[#004AAC]"
             aria-label="Previous"
           >
             <ArrowLeft />
           </button>
           <button
             onClick={scrollNext}
-            className="absolute left-20 bottom-0 transform -translate-y-1/2 bg-[#E40046] text-white p-2 rounded-full hover:bg-[#E40046]"
+            className="absolute left-20 bottom-0 transform -translate-y-1/2 bg-[#004AAC] text-white p-2 rounded-full hover:bg-[#004AAC]"
             aria-label="Next"
           >
             <ArrowRight />

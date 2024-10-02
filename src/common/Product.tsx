@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/card";
 import { ChevronRightIcon } from "lucide-react";
 import ProductCarousel from "./ProductCarousel";
+import CategoryGrid from "./Category";
 export const products = [
   {
     img: [
@@ -70,6 +71,7 @@ export const products = [
 export default function Product() {
   return (
     <div className="md:p-5  p-2">
+      <CategoryGrid />
       <div className="my-5 flex justify-between items-center">
         <div>
           <h2 className="text-2xl font-bold leading-[1.1] md:text-3xl">
@@ -109,7 +111,7 @@ export default function Product() {
               </CardContent>
               <CardFooter className="flex justify-between gap-x-2 !p-3">
                 <div className="flex-1">
-                  <Button className="w-full !bg-[#E40046]">Add To Cart</Button>
+                  <Button className="w-full !bg-[#004AAC]">Add To Cart</Button>
                 </div>
                 <div>
                   <Button variant="outline">

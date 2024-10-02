@@ -57,13 +57,15 @@ export default function Navbar() {
     <div className="hidden gap-6 lg:flex">
       <NavigationMenu className=" flex gap-x-6">
         <Link href="/" className="hidden items-center space-x-2 lg:flex">
-          <Icons.logo className="size-7" aria-hidden="true" />
-          <span className="hidden font-bold lg:inline-block">Hello</span>
+          <Icons.logo className="size-7" color="white" aria-hidden="true" />
+          <span className="hidden font-bold lg:inline-block text-white">
+            Hello
+          </span>
           <span className="sr-only">Home</span>
         </Link>
         <NavigationMenuList>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-[#E40046] !text-white">
+            <NavigationMenuTrigger className="!bg-[#004AAC] !text-white">
               Getting started
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -98,7 +100,7 @@ export default function Navbar() {
             </NavigationMenuContent>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-[#E40046] !text-white">
+            <NavigationMenuTrigger className="!bg-[#004AAC] !text-white">
               Components
             </NavigationMenuTrigger>
             <NavigationMenuContent>
@@ -119,7 +121,7 @@ export default function Navbar() {
             <Link href="/docs" legacyBehavior passHref>
               <NavigationMenuLink
                 className={
-                  (navigationMenuTriggerStyle(), "!bg-[#E40046] !text-white")
+                  (navigationMenuTriggerStyle(), "!bg-[#004AAC] !text-white")
                 }
               >
                 Documentation
