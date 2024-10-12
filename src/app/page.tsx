@@ -1,13 +1,5 @@
-import Header from "../common/Header";
-import Hero from "../common/Hero";
-import Product from "../common/Product";
+import Homepage from "./homepage/page";
 
 export default function Home() {
-  return (
-    <div>
-      <Header />
-      <Hero />
-      <Product />
-    </div>
-  );
+  return <Homepage />;
 }

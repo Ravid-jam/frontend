@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import Link from "next/link";
 
 import {
   NavigationMenu,
@@ -9,125 +8,345 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "../components/ui/navigation-menu";
-import { Icons } from "../components/ui/icons";
 import { cn } from "../lib/utils";
+interface MegaRoute {
+  id: number;
+  title: string;
+  href: string;
+}
 
-const components: { title: string; href: string; description: string }[] = [
+interface SubCategory {
+  id: number;
+  title: string;
+  megaRoute: MegaRoute[];
+}
+
+interface Category {
+  id: number;
+  title: string;
+  subCategory: SubCategory[];
+}
+
+const category: Category[] = [
   {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
+    id: 1,
+    title: "Women Ethnic",
+    subCategory: [
+      {
+        id: 1,
+        title: "Sarees",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Silk Sarees",
+            href: "/women-ethnic/sarees/green-stripes",
+          },
+          {
+            id: 2,
+            title: "Printed Sarees",
+            href: "/women-ethnic/sarees/pink-dots",
+          },
+          {
+            id: 3,
+            title: "Cotton Silk Sarees",
+            href: "/women-ethnic/sarees/blue-dots",
+          },
+          {
+            id: 4,
+            title: "Georgette Sarees",
+            href: "/women-ethnic/sarees/yellow-stripes",
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
+    id: 2,
+    title: "Men Ethnic",
+    subCategory: [
+      {
+        id: 1,
+        title: "Shirts",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Cotton Shirts",
+            href: "/men-ethnic/shirts/green-stripes",
+          },
+          {
+            id: 2,
+            title: "Printed Shirts",
+            href: "/men-ethnic/shirts/pink-dots",
+          },
+          {
+            id: 3,
+            title: "Denim Shirts",
+            href: "/men-ethnic/shirts/blue-dots",
+          },
+          {
+            id: 4,
+            title: "Flannel Shirts",
+            href: "/men-ethnic/shirts/yellow-stripes",
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
+    id: 3,
+    title: "Kids Ethnic",
+    subCategory: [
+      {
+        id: 1,
+        title: "T-Shirts",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Cotton T-Shirts",
+            href: "/kids-ethnic/t-shirts/green-stripes",
+          },
+          {
+            id: 2,
+            title: "Printed T-Shirts",
+            href: "/kids-ethnic/t-shirts/pink-dots",
+          },
+          {
+            id: 3,
+            title: "Denim T-Shirts",
+            href: "/kids-ethnic/t-shirts/blue-dots",
+          },
+          {
+            id: 4,
+            title: "Flannel T-Shirts",
+            href: "/kids-eth",
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
+    id: 4,
+    title: "Home & Garden",
+    subCategory: [
+      {
+        id: 1,
+        title: "Home Decor",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Wall Art",
+            href: "/home-garden/home-decor/wall-art",
+          },
+          {
+            id: 2,
+            title: "Wallpaper",
+            href: "/home-garden/home-decor/wallpaper",
+          },
+          {
+            id: 3,
+            title: "Flooring",
+            href: "/home-garden/home-decor/flooring",
+          },
+          {
+            id: 4,
+            title: "Rugs",
+            href: "/home-garden/home-decor/rugs",
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
+    id: 5,
+    title: "Electronics",
+    subCategory: [
+      {
+        id: 1,
+        title: "Mobile Phones",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Smartphones",
+            href: "/electronics/mobile-phones/smartphones",
+          },
+          {
+            id: 2,
+            title: "Tablets",
+            href: "/electronics/mobile-phones/tablets",
+          },
+          {
+            id: 3,
+            title: "Accessories",
+            href: "/electronics/mobile-phones/accessories",
+          },
+          {
+            id: 4,
+            title: "Headphones",
+            href: "/electronics/mobile-phones/headphones",
+          },
+        ],
+      },
+    ],
   },
   {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
+    id: 6,
+    title: "Books & Magazines",
+    subCategory: [
+      {
+        id: 1,
+        title: "Books",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Fiction",
+            href: "/books-magazines/books/fiction",
+          },
+          {
+            id: 2,
+            title: "Non-Fiction",
+            href: "/books-magazines/books/non-fiction",
+          },
+          {
+            id: 3,
+            title: "Children's Books",
+            href: "/books-magazines/books/childrens-books",
+          },
+          {
+            id: 4,
+            title: "Business & Finance",
+            href: "/books-magazines/books/business-finance",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 7,
+    title: "Clothing & Accessories",
+    subCategory: [
+      {
+        id: 1,
+        title: "Clothing",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Women's Clothing",
+            href: "/clothing-accessories/clothing/women",
+          },
+          {
+            id: 2,
+            title: "Men's Clothing",
+            href: "/clothing-accessories/clothing/men",
+          },
+          {
+            id: 3,
+            title: "Kids' Clothing",
+            href: "/clothing-accessories/clothing/kids",
+          },
+          {
+            id: 4,
+            title: "Home & Garden Clothing",
+            href: "/clothing-accessories/clothing/home-garden",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: "Groceries & Essentials",
+    subCategory: [
+      {
+        id: 1,
+        title: "Groceries",
+        megaRoute: [
+          {
+            id: 1,
+            title: "Breakfast",
+            href: "/groceries-essentials/groceries/breakfast",
+          },
+          {
+            id: 2,
+            title: "Lunch & Dinner",
+            href: "/groceries-essentials/groceries/lunch-dinner",
+          },
+          {
+            id: 3,
+            title: "Snacks",
+            href: "/groceries-essentials/groceries/snacks",
+          },
+          {
+            id: 4,
+            title: "Meat & Poultry",
+            href: "/groceries-essentials/groceries/meat-poultry",
+          },
+        ],
+      },
+    ],
   },
 ];
 
 export default function Navbar() {
+  const [isActive, setIsActive] = React.useState<number | null>(null);
+
   return (
-    <div className="hidden gap-6 lg:flex">
-      <NavigationMenu className=" flex gap-x-6">
-        <Link href="/" className="hidden items-center space-x-2 lg:flex">
-          <Icons.logo className="size-7" color="white" aria-hidden="true" />
-          <span className="hidden font-bold lg:inline-block text-white">
-            Hello
-          </span>
-          <span className="sr-only">Home</span>
-        </Link>
+    <div className="hidden gap-6 lg:flex px-5">
+      <NavigationMenu
+        onMouseLeave={() => setIsActive(null)}
+        className="[&_div.absolute]:w-full"
+      >
         <NavigationMenuList>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-[#004AAC] !text-white">
-              Getting started
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                <li className="row-span-3">
-                  <NavigationMenuLink asChild>
-                    <a
-                      className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                      href="/"
-                    >
-                      <Icons.logo className="h-6 w-6" />
-                      <div className="mb-2 mt-4 text-lg font-medium">
-                        shadcn/ui
-                      </div>
-                      <p className="text-sm leading-tight text-muted-foreground">
-                        Beautifully designed components built with Radix UI and
-                        Tailwind CSS.
-                      </p>
-                    </a>
+          {category.map((item: Category, index: number) => (
+            <NavigationMenuItem key={item.id}>
+              <div className="relative group">
+                <NavigationMenuTrigger
+                  className={`hide-trigger hover:!bg-transparent  font-normal rounded-none ${
+                    isActive === index ? "!text-[#004AAC]" : ""
+                  }`}
+                  aria-expanded="false"
+                  data-state="closed"
+                  style={{ backgroundImage: "none" }}
+                  onMouseEnter={() => setIsActive(index)}
+                >
+                  <NavigationMenuLink className="!bg-transparent hover:!bg-transparent focus:!bg-transparent after:content-none !text-base ">
+                    {item.title}
                   </NavigationMenuLink>
-                </li>
-                <ListItem href="/docs" title="Introduction">
-                  Re-usable components built using Radix UI and Tailwind CSS.
-                </ListItem>
-                <ListItem href="/docs/installation" title="Installation">
-                  How to install dependencies and structure your app.
-                </ListItem>
-                <ListItem href="/docs/primitives/typography" title="Typography">
-                  Styles for headings, paragraphs, lists...etc
-                </ListItem>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger className="!bg-[#004AAC] !text-white">
-              Components
-            </NavigationMenuTrigger>
-            <NavigationMenuContent>
-              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
-                {components.map((component) => (
-                  <ListItem
-                    key={component.title}
-                    title={component.title}
-                    href={component.href}
-                  >
-                    {component.description}
-                  </ListItem>
-                ))}
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
-          <NavigationMenuItem>
-            <Link href="/docs" legacyBehavior passHref>
-              <NavigationMenuLink
-                className={
-                  (navigationMenuTriggerStyle(), "!bg-[#004AAC] !text-white")
-                }
+                </NavigationMenuTrigger>
+                <span
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-[#014aad] transition-all ${
+                    isActive === index ? "w-full" : "w-0"
+                  } 
+                `}
+                ></span>
+              </div>
+
+              <NavigationMenuContent
+                onMouseLeave={() => setIsActive(null)}
+                className="mega-content"
               >
-                Documentation
-              </NavigationMenuLink>
-            </Link>
-          </NavigationMenuItem>
+                <div className="grid  gap-3 p-4">
+                  {item.subCategory.map((subItem: SubCategory) => (
+                    <div key={subItem.id}>
+                      <h3 className="text-base font-bold mb-2 text-[#014aad]">
+                        All {subItem.title}
+                      </h3>
+                      <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                        {subItem.megaRoute.map((route: MegaRoute) => (
+                          <ListItem
+                            key={route.id}
+                            className="text-sm !font-bold !p-0 hover:text-[#014aad] !bg-transparent leading-none"
+                            title={route.title}
+                            href={route.href}
+                          ></ListItem>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ))}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
