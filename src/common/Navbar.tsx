@@ -291,7 +291,7 @@ export default function Navbar() {
   const [isActive, setIsActive] = React.useState<number | null>(null);
 
   return (
-    <div className="hidden gap-6 lg:flex px-5">
+    <div className=" gap-6  px-5">
       <NavigationMenu
         onMouseLeave={() => setIsActive(null)}
         className="[&_div.absolute]:w-full"

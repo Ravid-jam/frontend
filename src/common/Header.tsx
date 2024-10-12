@@ -40,9 +40,9 @@ export default function Header() {
   return (
     <React.Fragment>
       <header className="sticky top-0 z-50 w-full bg-background border-b shadow-lg">
-        <div className="container flex items-center justify-between h-16 px-4 md:px-6">
+        <div className="flex items-center justify-between h-16 px-4 md:px-6">
           <div className="flex items-center space-x-5">
-            <div className="lg:hidden block">
+            <div className="xl:hidden block">
               <Button
                 size="icon"
                 className="!bg-white text-black"
@@ -130,7 +130,7 @@ export default function Header() {
             </DropdownMenu>
           </div>
         </div>
-        <div className="py-1 border-t-[1px]">
+        <div className="py-1 hidden xl:flex  border-t-[1px]">
           <Navbar />
         </div>
       </header>

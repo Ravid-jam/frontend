@@ -23,9 +23,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ChevronDownIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import ProductCarousel from "../../../common/ProductCarousel";
 export const products = [
   {
+    id: 1,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -34,6 +36,7 @@ export const products = [
     ],
   },
   {
+    id: 2,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -42,6 +45,7 @@ export const products = [
     ],
   },
   {
+    id: 3,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -50,6 +54,7 @@ export const products = [
     ],
   },
   {
+    id: 4,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -58,6 +63,7 @@ export const products = [
     ],
   },
   {
+    id: 5,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -66,6 +72,7 @@ export const products = [
     ],
   },
   {
+    id: 6,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -74,6 +81,7 @@ export const products = [
     ],
   },
   {
+    id: 7,
     img: [
       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
@@ -84,6 +92,7 @@ export const products = [
 ];
 
 export default function Product() {
+  const router = useRouter();
   return (
     <div className="md:px-4   flex">
       <div className="hidden lg:block w-1/3 mr-5">
@@ -202,7 +211,10 @@ export default function Product() {
                 </CardHeader>
                 <CardContent className="!p-2">
                   <div className="flex justify-between">
-                    <h3 className="font-[550] text-base truncate w-28">
+                    <h3
+                      className="font-[550] text-base truncate w-28"
+                      onClick={() => router.push(`/details/${row.id}`)}
+                    >
                       Product Name
                     </h3>
                     <p>Price: $100</p>
