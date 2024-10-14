@@ -13,7 +13,7 @@ export default function ProductCarousel({
   slides,
   autoplayInterval = 10000,
 }: EmblaCarouselProps) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [
     Fade(),
     Autoplay(),
   ]);
@@ -62,18 +62,16 @@ export default function ProductCarousel({
           </div>
         ))}
       </div>
-      <div className="md:flex items-center hidden">
-        <div className="absolute right-14 bottom-1  flex justify-end mr-4">
-          {slides &&
-            slides.length > 1 &&
-            slides?.map((_, index) => (
-              <EmblaCarouselDotButton
-                key={index}
-                selected={selectedIndex === index}
-                onClick={() => emblaApi && emblaApi.scrollTo(index)}
-              />
-            ))}
-        </div>
+      <div className="embla__dots flex justify-center items-center ">
+        {slides &&
+          slides.length > 1 &&
+          slides?.map((_, index) => (
+            <EmblaCarouselDotButton
+              key={index}
+              selected={selectedIndex === index}
+              onClick={() => emblaApi && emblaApi.scrollTo(index)}
+            />
+          ))}
       </div>
     </div>
   );

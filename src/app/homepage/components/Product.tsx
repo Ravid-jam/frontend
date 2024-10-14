@@ -202,8 +202,8 @@ export default function Product() {
                         {row.price}
                       </p>
                     </div>
-                    <div className="flex items-center my-3">
-                      <div className="flex items-center border rounded-full p-2 bg-[#23BB75]">
+                    <div className="flex items-center md:flex-nowrap flex-wrap gap-2 my-3">
+                      <div className="flex  items-center border rounded-full p-2 bg-[#23BB75]">
                         <svg
                           className="w-4 h-4 text-white me-1"
                           aria-hidden="true"
@@ -217,10 +217,9 @@ export default function Product() {
                           {row.rating}
                         </p>
                       </div>
-                      <span className="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400" />
                       <a
                         href="#"
-                        className="text-base font-medium font-sans text-gray-500 hover:underline  dark:text-white"
+                        className="sm:text-base text-sm font-medium font-sans text-gray-500 hover:underline  dark:text-white"
                       >
                         {row.reviews.length} Reviews
                       </a>

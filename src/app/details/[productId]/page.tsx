@@ -164,9 +164,9 @@ export default function Page({ params }: PageProps) {
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto py-5 px-4 md:px-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-8 max-w-6xl mx-auto py-5 px-4 md:px-6">
       <div className="flex md:flex-nowrap md:gap-4 gap-2">
-        <div className="flex flex-col gap-y-2">
+        <div className=" hidden sm:flex flex-col gap-y-2">
           {productDetails &&
             productDetails?.images?.map((image: string, index: number) => (
               <button
@@ -223,6 +223,32 @@ export default function Page({ params }: PageProps) {
             </div>
           </div>
         </div>
+      </div>
+      <div className=" sm:hidden flex gap-2">
+        {productDetails &&
+          productDetails?.images?.map((image: string, index: number) => (
+            <button
+              key={index}
+              className={`border rounded-md w-20 h-20 overflow-hidden transition-colors ${
+                selectedIndex === index
+                  ? "border-[1.5px] border-[#004AAC]"
+                  : "border-muted"
+              }`}
+              onMouseOver={() => {
+                if (emblaApi) {
+                  emblaApi.scrollTo(index);
+                }
+              }}
+            >
+              <img
+                src={image}
+                alt={`Product image ${index + 1}`}
+                width={100}
+                height={100}
+                className="aspect-square object-cover"
+              />
+            </button>
+          ))}
       </div>
       <div className="flex flex-col gap-7">
         <div>
