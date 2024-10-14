@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 
 export default function Filter() {
   return (
-    <div className="hidden lg:block w-1/3 mr-5">
+    <div className="hidden lg:block w-1/3 mr-5 sticky h-52 top-[10%]">
       <div className="mt-20">
         <div className="">
           <h2 className="text-2xl font-bold">Filters</h2>

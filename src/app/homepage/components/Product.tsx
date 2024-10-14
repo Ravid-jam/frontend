@@ -96,12 +96,10 @@ export default function Product() {
     getProducts();
   }, [skip, limit]);
 
-  // IntersectionObserver for infinite scrolling
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          console.log("Intersection Observer Entry:", entry);
           if (entry.isIntersecting && !loading && products.length < total) {
             setSkip((prev) => prev + limit); // Increase the skip count to load more data
           }
@@ -136,31 +134,31 @@ export default function Product() {
         <div className="grid gap-3 2xl:grid-cols-6 xl:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:px-0 px-2">
           {loading ? (
             <>
-              {Array.from({ length: limit }).map((_, index) => (
+              {Array.from({ length: total }).map((_, index) => (
                 <Card
                   className="!p-0 border border-gray-200 animate-pulse"
                   key={index}
                 >
                   <CardHeader className="!p-0">
-                    <div className="h-48 bg-gray-300 rounded-t-xl"></div>
+                    <div className="h-48 bg-[#e4e4e7] rounded-t-xl"></div>
                   </CardHeader>
                   <CardContent className="!py-1 !px-2">
                     <div>
-                      <div className="h-4 bg-gray-300 rounded w-3/2 mb-2"></div>
-                      <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
-                      <div className="h-4 bg-gray-300 rounded w-1/2 mb-2"></div>
+                      <div className="h-4 bg-[#e4e4e7] rounded w-3/2 mb-2"></div>
+                      <div className="h-4 bg-[#e4e4e7] rounded w-3/4 mb-2"></div>
+                      <div className="h-4 bg-[#e4e4e7] rounded w-1/2 mb-2"></div>
                       <div className="flex items-center md:flex-nowrap flex-wrap gap-2 my-3">
-                        <div className="flex items-center border rounded-full p-2 w-20 bg-gray-300">
+                        <div className="flex items-center border rounded-full p-2 w-20 bg-[#e4e4e7]">
                           <div className="h-4 w-4 bg-white rounded-full"></div>
                           <p className="ms-2 font-mono text-sm font-bold text-white"></p>
                         </div>
-                        <div className="h-4 bg-gray-300 rounded w-1/2"></div>
+                        <div className="h-4 bg-[#e4e4e7] rounded w-1/2"></div>
                       </div>
                     </div>
                   </CardContent>
                   <CardFooter className="flex justify-between gap-x-2 !pt-1 !px-2 !pb-3">
                     <div className="flex-1">
-                      <Button className="w-full !bg-gray-300"></Button>
+                      <Button className="w-full !bg-[#e4e4e7]"></Button>
                     </div>
                   </CardFooter>
                 </Card>

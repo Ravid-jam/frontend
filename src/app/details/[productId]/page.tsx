@@ -7,6 +7,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import EmblaCarouselDotButton from "../../../common/DotButton";
 import { Product } from "../../homepage/components/Product";
+import Rating from "../components/Rating";
 
 // Define types for the component props
 interface PageProps {
@@ -163,6 +164,7 @@ export default function Page({ params }: PageProps) {
     emblaApi.on("select", onSelect);
   }, [emblaApi, onSelect]);
 
+  console.log(productDetails);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-8 max-w-6xl mx-auto py-5 px-4 md:px-6">
       <div className="flex md:flex-nowrap md:gap-4 gap-2">
@@ -250,11 +252,12 @@ export default function Page({ params }: PageProps) {
             </button>
           ))}
       </div>
-      <div className="flex flex-col gap-7">
+      <div className="flex flex-col gap-5">
         <div>
           <h1 className="text-3xl font-bold">{productDetails?.title}</h1>
           <p className="text-muted-foreground">{productDetails?.description}</p>
         </div>
+        <Rating rating={productDetails?.rating} />
         <div className="grid gap-4">
           <div>
             <Label htmlFor="color" className="text-base">
@@ -307,7 +310,10 @@ export default function Page({ params }: PageProps) {
           </div>
         </div>
         <div className="flex lg:flex-nowrap flex-wrap items-center gap-4">
-          <h2 className="text-4xl font-bold">${product.price.toFixed(2)}</h2>
+          <h2 className="text-4xl font-bold">₹{product.price.toFixed(2)}</h2>
+          <h3 className="text-xl line-through text-gray-500 font-bold">
+            ₹{productDetails?.discountPercentage}
+          </h3>
           <div className="flex gap-2">
             <Button size="lg">Add to Cart</Button>
             <Button size="lg">Buy Now</Button>

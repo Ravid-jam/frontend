@@ -291,10 +291,10 @@ export default function Navbar() {
   const [isActive, setIsActive] = React.useState<number | null>(null);
 
   return (
-    <div className=" gap-6  px-5">
+    <div className="gap-6 px-5">
       <NavigationMenu
         onMouseLeave={() => setIsActive(null)}
-        className="[&_div.absolute]:w-full"
+        className="[&_div]:!w-full [&_div.absolute]:top-[34px] [&_div]:!rounded-t-none"
       >
         <NavigationMenuList>
           {category.map((item: Category, index: number) => (

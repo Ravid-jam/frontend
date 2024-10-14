@@ -72,7 +72,7 @@ export default function Header() {
               >
                 <MountainIcon className="h-6 w-6 text-white" />
                 <span className="text-lg font-semibold text-white">
-                  Acme Store
+                  Zudio light
                 </span>
               </Link>
             </div>
