@@ -8,98 +8,10 @@ import {
 } from "@/components/ui/card";
 import ProductCarousel from "@/src/common/ProductCarousel";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Filter from "./Filter";
-// export const products = [
-//   {
-//     id: 1,
-//     title: "Princess Elegant Jewellery Sets",
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1500,
-//     rating: 4.5,
-//   },
-//   {
-//     id: 2,
-//     title: "Fashionable Anarkali Kurta",
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1200,
-//     rating: 4.2,
-//   },
-//   {
-//     id: 3,
-//     title: "Sophisticated Anarkali Kurta",
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1800,
-//     rating: 4.7,
-//   },
-//   {
-//     id: 4,
-//     title: "Exquisite Anarkali Kurta",
 
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 2000,
-//     rating: 4.9,
-//   },
-//   {
-//     id: 5,
-//     title: "Elegant Anarkali Kurta",
-
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1800,
-//     rating: 4.8,
-//   },
-//   {
-//     id: 6,
-//     title: "Elegant Anarkali Kurta",
-
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1700,
-//     rating: 4.6,
-//   },
-//   {
-//     id: 7,
-//     title: "Elegant Anarkali Kurta",
-//     img: [
-//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-//     ],
-//     price: 1600,
-//     rating: 4.7,
-//   },
-// ];
-
+// Product Interface
 export interface Product {
   id: number;
   title: string;
@@ -125,8 +37,8 @@ export interface Product {
   returnPolicy: string;
   minimumOrderQuantity: number;
   meta: {
-    createdAt: string; // Use Date if you convert to Date type later
-    updatedAt: string; // Use Date if you convert to Date type later
+    createdAt: string;
+    updatedAt: string;
     barcode: string;
     qrCode: string;
   };
@@ -137,10 +49,11 @@ export interface Product {
 interface Review {
   rating: number;
   comment: string;
-  date: string; // Use Date if you convert to Date type later
+  date: string;
   reviewerName: string;
   reviewerEmail: string;
 }
+
 interface IProduct {
   limit: number;
   skip: number;
@@ -150,20 +63,56 @@ interface IProduct {
 
 export default function Product() {
   const router = useRouter();
-  const [products, setProducts] = useState<IProduct>();
+  const [products, setProducts] = useState<Product[]>([]);
+  const [limit] = useState(10); // Set the limit of products to fetch
+  const [skip, setSkip] = useState(0); // Track how many products are skipped
+  const [total, setTotal] = useState(0); // Total number of products available
+  const [loading, setLoading] = useState(false);
+
+  const observerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    function getProducts() {
-      fetch("https://dummyjson.com/products")
-        .then((res) => res.json())
-        .then((response) => response)
-        .then((data) => setProducts(data));
+    async function getProducts() {
+      setLoading(true);
+      try {
+        const res = await fetch(
+          `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
+        );
+        const data: IProduct = await res.json();
+        setProducts((prev) => [...prev, ...data.products]);
+        setTotal(data.total);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setLoading(false);
+      }
     }
 
     getProducts();
-  }, []);
+  }, [skip, limit]);
+
+  // IntersectionObserver for infinite scrolling
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && !loading && products.length < total) {
+          setSkip((prev) => prev + limit); // Increase the skip count to load more data
+        }
+      },
+      { threshold: 1.0 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) observer.disconnect();
+    };
+  }, [loading, products.length, total, limit]);
+
   return (
-    <div className="md:px-4   flex">
+    <div className="md:px-4 flex">
       <Filter />
       <div className="w-full lg:w-3/2">
         <div className="my-5 flex justify-between items-center sm:px-0 px-2">
@@ -178,7 +127,7 @@ export default function Product() {
         </div>
 
         <div className="grid gap-3 2xl:grid-cols-6 xl:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:px-0 px-2">
-          {products?.products?.map((row: Product, index: number) => (
+          {products.map((row: Product, index: number) => (
             <div key={index}>
               <Card className="!p-0 ">
                 <CardHeader className="!p-0 !h-22">
@@ -203,7 +152,7 @@ export default function Product() {
                       </p>
                     </div>
                     <div className="flex items-center md:flex-nowrap flex-wrap gap-2 my-3">
-                      <div className="flex  items-center border rounded-full p-2 bg-[#23BB75]">
+                      <div className="flex items-center border rounded-full p-2 bg-[#23BB75]">
                         <svg
                           className="w-4 h-4 text-white me-1"
                           aria-hidden="true"
@@ -219,7 +168,7 @@ export default function Product() {
                       </div>
                       <a
                         href="#"
-                        className="sm:text-base text-sm font-medium font-sans text-gray-500 hover:underline  dark:text-white"
+                        className="sm:text-base text-sm font-medium font-sans text-gray-500 hover:underline dark:text-white"
                       >
                         {row.reviews.length} Reviews
                       </a>
@@ -232,29 +181,21 @@ export default function Product() {
                       Add To Cart
                     </Button>
                   </div>
-                  {/* <div>
-                    <Button variant="outline">
-                      <svg
-                        width="15"
-                        height="15"
-                        viewBox="0 0 15 15"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z"
-                          fill="currentColor"
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                    </Button>
-                  </div> */}
                 </CardFooter>
               </Card>
             </div>
           ))}
         </div>
+
+        {/* Observer element for infinite scroll */}
+        <div ref={observerRef} className="h-10 w-full"></div>
+
+        {/* Loading indicator */}
+        {loading && (
+          <div className="text-center py-5">
+            <p>Loading more products...</p>
+          </div>
+        )}
       </div>
     </div>
   );
