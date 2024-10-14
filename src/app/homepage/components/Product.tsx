@@ -1,10 +1,4 @@
 "use client";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -12,221 +6,234 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { ChevronDownIcon } from "lucide-react";
+import ProductCarousel from "@/src/common/ProductCarousel";
 import { useRouter } from "next/navigation";
-import ProductCarousel from "../../../common/ProductCarousel";
-export const products = [
-  {
-    id: 1,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 2,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 3,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 4,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 5,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 6,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-  {
-    id: 7,
-    img: [
-      "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
-      "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
-    ],
-  },
-];
+import { useEffect, useState } from "react";
+import Filter from "./Filter";
+// export const products = [
+//   {
+//     id: 1,
+//     title: "Princess Elegant Jewellery Sets",
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1500,
+//     rating: 4.5,
+//   },
+//   {
+//     id: 2,
+//     title: "Fashionable Anarkali Kurta",
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1200,
+//     rating: 4.2,
+//   },
+//   {
+//     id: 3,
+//     title: "Sophisticated Anarkali Kurta",
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1800,
+//     rating: 4.7,
+//   },
+//   {
+//     id: 4,
+//     title: "Exquisite Anarkali Kurta",
+
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=172284",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 2000,
+//     rating: 4.9,
+//   },
+//   {
+//     id: 5,
+//     title: "Elegant Anarkali Kurta",
+
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1800,
+//     rating: 4.8,
+//   },
+//   {
+//     id: 6,
+//     title: "Elegant Anarkali Kurta",
+
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1700,
+//     rating: 4.6,
+//   },
+//   {
+//     id: 7,
+//     title: "Elegant Anarkali Kurta",
+//     img: [
+//       "https://juniperfashion.com/cdn/shop/files/Juniper_Peach_Cotton_Tribal_Print_Crushed_Anarkali_Kurta_With_Pant_Dupatta_Set_With_Kantha_Work_Button_-2164400.jpg?v=1722842940&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4374MUSTARD-13_334c9184-5092-46f7-ad6e-c24109f27f10.jpg?v=1712725485&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4354PEACH-7_73091204-78b4-4a96-999e-6e408d9cf53d.jpg?v=1712665508&width=300",
+//       "https://juniperfashion.com/cdn/shop/files/S4388CORAL-8_c1414c87-99c1-4420-bd1f-902501f58231.jpg?v=1712726955&width=300",
+//     ],
+//     price: 1600,
+//     rating: 4.7,
+//   },
+// ];
+
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+  discountPercentage: number;
+  rating: number;
+  stock: number;
+  tags: string[];
+  brand: string;
+  sku: string;
+  weight: number;
+  dimensions: {
+    width: number;
+    height: number;
+    depth: number;
+  };
+  warrantyInformation: string;
+  shippingInformation: string;
+  availabilityStatus: string;
+  reviews: Review[];
+  returnPolicy: string;
+  minimumOrderQuantity: number;
+  meta: {
+    createdAt: string; // Use Date if you convert to Date type later
+    updatedAt: string; // Use Date if you convert to Date type later
+    barcode: string;
+    qrCode: string;
+  };
+  images: string[];
+  thumbnail: string;
+}
+
+interface Review {
+  rating: number;
+  comment: string;
+  date: string; // Use Date if you convert to Date type later
+  reviewerName: string;
+  reviewerEmail: string;
+}
+interface IProduct {
+  limit: number;
+  skip: number;
+  total: number;
+  products: Product[];
+}
 
 export default function Product() {
   const router = useRouter();
+  const [products, setProducts] = useState<IProduct>();
+
+  useEffect(() => {
+    function getProducts() {
+      fetch("https://dummyjson.com/products")
+        .then((res) => res.json())
+        .then((response) => response)
+        .then((data) => setProducts(data));
+    }
+
+    getProducts();
+  }, []);
   return (
     <div className="md:px-4   flex">
-      <div className="hidden lg:block w-1/3 mr-5">
-        <div className="mt-20">
-          <div className="">
-            <h2 className="text-2xl font-bold">Filters</h2>
-            <Accordion type="single" collapsible>
-              <AccordionItem value="price">
-                <AccordionTrigger className="text-base font-medium">
-                  Price
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="grid gap-4">
-                    <div className="grid gap-2">
-                      <Label
-                        htmlFor="price-min"
-                        className="text-sm font-medium"
-                      >
-                        Min Price
-                      </Label>
-                      <Input
-                        id="price-min"
-                        type="number"
-                        placeholder="0"
-                        className="w-full"
-                      />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label
-                        htmlFor="price-max"
-                        className="text-sm font-medium"
-                      >
-                        Max Price
-                      </Label>
-                      <Input
-                        id="price-max"
-                        type="number"
-                        placeholder="1000"
-                        className="w-full"
-                      />
-                    </div>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="brand">
-                <AccordionTrigger className="text-base font-medium">
-                  Brand
-                </AccordionTrigger>
-                <AccordionContent>
-                  <div className="grid gap-2">
-                    <Label className="flex items-center gap-2 font-normal">
-                      <Checkbox id="brand-apple" /> Apple
-                    </Label>
-                    <Label className="flex items-center gap-2 font-normal">
-                      <Checkbox id="brand-nike" /> Nike
-                    </Label>
-                    <Label className="flex items-center gap-2 font-normal">
-                      <Checkbox id="brand-ikea" /> IKEA
-                    </Label>
-                    <Label className="flex items-center gap-2 font-normal">
-                      <Checkbox id="brand-sephora" /> Sephora
-                    </Label>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </div>
+      <Filter />
       <div className="w-full lg:w-3/2">
-        <div className="my-5 flex justify-between items-center">
+        <div className="my-5 flex justify-between items-center sm:px-0 px-2">
           <div>
-            <h2 className="text-2xl font-bold leading-[1.1] md:text-3xl">
+            <h2 className="text-2xl font-bold font-serif leading-[1.1] md:text-3xl">
               Products For You
             </h2>
             <p className="max-w-[46.875rem] text-sm leading-normal text-muted-foreground">
               Explore products from around the world
             </p>
           </div>
-          <div className="sm:block hidden">
-            <div className="grid gap-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="w-full justify-between">
-                    <span>Sort by</span>
-                    <ChevronDownIcon className="w-5 h-5" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-full">
-                  <DropdownMenuRadioGroup value="featured">
-                    <DropdownMenuRadioItem value="featured">
-                      Featured
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="newest">
-                      Newest
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="price-asc">
-                      Price: Low to High
-                    </DropdownMenuRadioItem>
-                    <DropdownMenuRadioItem value="price-desc">
-                      Price: High to Low
-                    </DropdownMenuRadioItem>
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
-          </div>
         </div>
 
-        <div className="grid gap-3 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 grid-cols-1">
-          {products?.map((row, index) => (
+        <div className="grid gap-3 2xl:grid-cols-6 xl:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:px-0 px-2">
+          {products?.products?.map((row: Product, index: number) => (
             <div key={index}>
-              <Card className="!p-0">
-                <CardHeader className="!p-0">
-                  <ProductCarousel slides={row.img} />
+              <Card className="!p-0 ">
+                <CardHeader className="!p-0 !h-22">
+                  <ProductCarousel slides={row.images} />
                 </CardHeader>
-                <CardContent className="!p-2">
-                  <div className="flex justify-between">
+                <CardContent className="!py-1 !px-2">
+                  <div>
                     <h3
-                      className="font-[550] text-base truncate w-28"
+                      className="text-base font-serif truncate cursor-pointer hover:underline text-[#8A8AA2] w-full"
                       onClick={() => router.push(`/details/${row.id}`)}
                     >
-                      Product Name
+                      {row.title}
                     </h3>
-                    <p>Price: $100</p>
+                    <div className="">
+                      <p className="text-lg font-bold font-mono text-gray-600 line-through">
+                        <span className="text-base">₹</span>
+                        {row.discountPercentage}
+                      </p>
+                      <p className="text-[#353543] font-bold text-2xl font-mono">
+                        <span className="text-lg">₹</span>
+                        {row.price}
+                      </p>
+                    </div>
+                    <div className="flex items-center my-3">
+                      <div className="flex items-center border rounded-full p-2 bg-[#23BB75]">
+                        <svg
+                          className="w-4 h-4 text-white me-1"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="currentColor"
+                          viewBox="0 0 22 20"
+                        >
+                          <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z" />
+                        </svg>
+                        <p className="ms-2 font-mono text-sm font-bold text-white">
+                          {row.rating}
+                        </p>
+                      </div>
+                      <span className="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400" />
+                      <a
+                        href="#"
+                        className="text-base font-medium font-sans text-gray-500 hover:underline  dark:text-white"
+                      >
+                        {row.reviews.length} Reviews
+                      </a>
+                    </div>
                   </div>
                 </CardContent>
-                <CardFooter className="flex justify-between gap-x-2 !p-3">
+                <CardFooter className="flex justify-between gap-x-2 !pt-1 !px-2 !pb-3">
                   <div className="flex-1">
                     <Button className="w-full !bg-[#004AAC]">
                       Add To Cart
                     </Button>
                   </div>
-                  <div>
+                  {/* <div>
                     <Button variant="outline">
                       <svg
                         width="15"
@@ -243,7 +250,7 @@ export default function Product() {
                         ></path>
                       </svg>
                     </Button>
-                  </div>
+                  </div> */}
                 </CardFooter>
               </Card>
             </div>

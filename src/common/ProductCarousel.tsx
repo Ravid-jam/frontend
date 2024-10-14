@@ -2,8 +2,8 @@
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import useEmblaCarousel from "embla-carousel-react";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import EmblaCarouselDotButton from "./DotButton";
 
 type EmblaCarouselProps = {
   slides?: string[];
@@ -17,15 +17,23 @@ export default function ProductCarousel({
     Fade(),
     Autoplay(),
   ]);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollPrev = useCallback(
-    () => emblaApi && emblaApi.scrollPrev(),
-    [emblaApi]
-  );
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
   const scrollNext = useCallback(
     () => emblaApi && emblaApi.scrollNext(),
     [emblaApi]
   );
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
   useEffect(() => {
     if (!emblaApi) return;
@@ -38,39 +46,33 @@ export default function ProductCarousel({
       clearInterval(autoplay);
     };
   }, [emblaApi, autoplayInterval, scrollNext]);
+
   return (
-    <div>
-      <div
-        className="embla relative h-[450px] md:h-80 lg:h-[450px] xl:h-auto"
-        ref={emblaRef}
-      >
-        <div className="embla__container h-full ">
-          {slides?.map((item, index) => (
-            <div
-              className="embla__slide flex justify-center items-center"
-              key={index}
-            >
-              <img src={item} className=" h-full w-full object-cover" />
-            </div>
-          ))}
-        </div>
-        <div className="md:flex items-center hidden">
-          <div className="flex gap-x-3 m-2">
-            <button
-              onClick={scrollPrev}
-              className="absolute right-14 bottom-2 transform -translate-y-1/2 bg-[#004AAC] text-white p-1 rounded-full hover:bg-[#004AAC]"
-              aria-label="Previous"
-            >
-              <ArrowLeft />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="absolute right-2 bottom-2 transform -translate-y-1/2 bg-[#004AAC] text-white p-1 rounded-full hover:bg-[#004AAC]"
-              aria-label="Next"
-            >
-              <ArrowRight />
-            </button>
+    <div className="embla relative" ref={emblaRef}>
+      <div className="embla__container h-44 md:h-52 cursor-pointer">
+        {slides?.map((item, index) => (
+          <div
+            className="embla__slide flex justify-center items-center"
+            key={index}
+          >
+            <img
+              src={item}
+              className="h-full w-full object-fill md:object-cover"
+            />
           </div>
+        ))}
+      </div>
+      <div className="md:flex items-center hidden">
+        <div className="absolute right-14 bottom-1  flex justify-end mr-4">
+          {slides &&
+            slides.length > 1 &&
+            slides?.map((_, index) => (
+              <EmblaCarouselDotButton
+                key={index}
+                selected={selectedIndex === index}
+                onClick={() => emblaApi && emblaApi.scrollTo(index)}
+              />
+            ))}
         </div>
       </div>
     </div>

@@ -9,7 +9,7 @@ const DotButton: React.FC<DotButtonProps> = ({ selected, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`h-3 w-3 mx-1 rounded-full  ${
+      className={`h-2 w-2 mx-1 rounded-full  ${
         selected ? "bg-[#004AAC]" : "bg-gray-300"
       }`}
       aria-label="Slide navigation button"

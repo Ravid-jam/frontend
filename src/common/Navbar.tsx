@@ -309,7 +309,7 @@ export default function Navbar() {
                   style={{ backgroundImage: "none" }}
                   onMouseEnter={() => setIsActive(index)}
                 >
-                  <NavigationMenuLink className="!bg-transparent hover:!bg-transparent focus:!bg-transparent after:content-none !text-base ">
+                  <NavigationMenuLink className="!bg-transparent !font-serif hover:!bg-transparent focus:!bg-transparent after:content-none !text-base ">
                     {item.title}
                   </NavigationMenuLink>
                 </NavigationMenuTrigger>
@@ -328,14 +328,14 @@ export default function Navbar() {
                 <div className="grid  gap-3 p-4">
                   {item.subCategory.map((subItem: SubCategory) => (
                     <div key={subItem.id}>
-                      <h3 className="text-base font-bold mb-2 text-[#014aad]">
+                      <h3 className="text-base font-serif font-bold mb-2 text-[#014aad]">
                         All {subItem.title}
                       </h3>
                       <ul className="grid gap-3 p-4 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
                         {subItem.megaRoute.map((route: MegaRoute) => (
                           <ListItem
                             key={route.id}
-                            className="text-sm !font-bold !p-0 hover:text-[#014aad] !bg-transparent leading-none"
+                            className="text-sm !font-bold !font-serif !p-0 hover:text-[#014aad] !bg-transparent leading-none"
                             title={route.title}
                             href={route.href}
                           ></ListItem>
