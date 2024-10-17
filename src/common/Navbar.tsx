@@ -10,6 +10,7 @@ import {
   NavigationMenuTrigger,
 } from "../components/ui/navigation-menu";
 import { cn } from "../lib/utils";
+
 interface MegaRoute {
   id: number;
   title: string;
@@ -291,15 +292,15 @@ export default function Navbar() {
   const [isActive, setIsActive] = React.useState<number | null>(null);
 
   return (
-    <div className="gap-6 px-5">
+    <div className="gap-6 px-5 ">
       <NavigationMenu
         onMouseLeave={() => setIsActive(null)}
-        className="[&_div]:!w-full [&_div.absolute]:top-[34px] [&_div]:!rounded-t-none"
+        className="[&_div]:!w-full [&_div.absolute]:top-[34px]  [&_div]:!rounded-t-none"
       >
         <NavigationMenuList>
           {category.map((item: Category, index: number) => (
             <NavigationMenuItem key={item.id}>
-              <div className="relative group">
+              <div className="relative">
                 <NavigationMenuTrigger
                   className={`hide-trigger hover:!bg-transparent  font-normal rounded-none ${
                     isActive === index ? "!text-[#004AAC]" : ""
@@ -309,7 +310,7 @@ export default function Navbar() {
                   style={{ backgroundImage: "none" }}
                   onMouseEnter={() => setIsActive(index)}
                 >
-                  <NavigationMenuLink className="!bg-transparent !font-serif hover:!bg-transparent focus:!bg-transparent after:content-none !text-base ">
+                  <NavigationMenuLink className="!bg-transparent  !font-serif hover:!bg-transparent focus:!bg-transparent after:content-none !text-base ">
                     {item.title}
                   </NavigationMenuLink>
                 </NavigationMenuTrigger>

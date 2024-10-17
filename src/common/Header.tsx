@@ -80,18 +80,18 @@ export default function Header() {
           <div>
             <Button
               variant="outline"
-              className="relative size-9 p-0 xl:h-10 xl:w-96 xl:justify-start xl:px-3 xl:py-2"
+              className="relative size-9 p-0 md:h-10 md:w-96 md:justify-start md:px-3 xl:py-2"
               onClick={() => setOpen(true)}
             >
               <MagnifyingGlassIcon
-                className="size-4 xl:mr-2"
+                className="size-4 md:mr-2"
                 aria-hidden="true"
               />
-              <span className="hidden xl:inline-flex">Search products...</span>
+              <span className="hidden md:inline-flex">Search products...</span>
               <span className="sr-only">Search products</span>
               <Kbd
                 title={isMacOs() ? "Command" : "Control"}
-                className="pointer-events-none absolute right-1.5 top-1.5 hidden xl:block"
+                className="pointer-events-none absolute right-1.5 top-1.5 hidden md:block"
               >
                 {isMacOs() ? "⌘" : "Ctrl"} K
               </Kbd>
