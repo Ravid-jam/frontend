@@ -3,7 +3,7 @@ import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
-import EmblaCarouselDotButton from "./DotButton";
+import EmbalmCarouselDotButton from "./EmbalmCarouselDotButton";
 
 type EmblaCarouselProps = {
   slides?: string[];
@@ -57,16 +57,16 @@ export default function ProductCarousel({
           >
             <img
               src={item}
-              className="h-full w-full object-fill md:object-cover"
+              className="h-full w-full rounded-t-2xl object-fill md:object-cover"
             />
           </div>
         ))}
       </div>
-      <div className="embla__dots flex justify-center items-center ">
+      <div className="embla__dots flex justify-center items-center">
         {slides &&
           slides.length > 1 &&
           slides?.map((_, index) => (
-            <EmblaCarouselDotButton
+            <EmbalmCarouselDotButton
               key={index}
               selected={selectedIndex === index}
               onClick={() => emblaApi && emblaApi.scrollTo(index)}

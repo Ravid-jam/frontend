@@ -5,7 +5,10 @@ type DotButtonProps = {
   onClick: () => void; // Function to handle click events
 };
 
-const DotButton: React.FC<DotButtonProps> = ({ selected, onClick }) => {
+const EmbalmCarouselDotButton: React.FC<DotButtonProps> = ({
+  selected,
+  onClick,
+}) => {
   return (
     <button
       onClick={onClick}
@@ -17,4 +20,4 @@ const DotButton: React.FC<DotButtonProps> = ({ selected, onClick }) => {
   );
 };
 
-export default DotButton;
+export default EmbalmCarouselDotButton;

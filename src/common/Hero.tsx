@@ -3,7 +3,7 @@ import Autoplay from "embla-carousel-autoplay";
 import useEmblaCarousel from "embla-carousel-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import EmblaCarouselDotButton from "./DotButton";
+import EmbalmCarouselDotButton from "./EmbalmCarouselDotButton";
 
 export const data = [
   {
@@ -98,7 +98,7 @@ export default function Hero({ autoplayInterval = 6000 }: EmblaCarouselProps) {
         </div>
         <div className="absolute right-3 bottom-7  flex justify-end mr-4">
           {data.map((_, index) => (
-            <EmblaCarouselDotButton
+            <EmbalmCarouselDotButton
               key={index}
               selected={selectedIndex === index}
               onClick={() => emblaApi && emblaApi.scrollTo(index)}
