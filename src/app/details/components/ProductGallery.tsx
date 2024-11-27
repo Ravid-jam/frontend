@@ -1,8 +1,8 @@
 "use client";
 
-import { cn } from "@/src/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
+import Slider from "react-slick";
 
 interface ProductGalleryProps {
   images: string[];
@@ -11,36 +11,51 @@ interface ProductGalleryProps {
 export function ProductGallery({ images }: ProductGalleryProps) {
   const [selectedImage, setSelectedImage] = useState(0);
 
-  return (
-    <div className="space-y-4">
-      <div className="relative aspect-square overflow-hidden rounded-lg border">
+  const settings = {
+    dots: true,
+    customPaging: (i: number) => (
+      <div
+        className={`relative h-14 w-14 overflow-hidden rounded-lg border transition-all duration-300 ${
+          selectedImage === i
+            ? "border-primary ring-2 ring-primary"
+            : "border-gray-300"
+        }`}
+      >
         <Image
-          src={images[selectedImage]}
-          alt="Product image"
+          src={images[i]}
+          alt={`Thumbnail ${i + 1}`}
           fill
           className="object-cover"
-          priority
         />
       </div>
-      <div className="grid grid-cols-4 gap-4">
+    ),
+    dotsClass: "slick-dots custom-dots flex gap-2 mt-4",
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    afterChange: (current: number) => setSelectedImage(current),
+  };
+
+  return (
+    <div className="space-y-4">
+      <Slider {...settings}>
         {images.map((image, i) => (
-          <button
+          <div
             key={i}
-            onClick={() => setSelectedImage(i)}
-            className={cn(
-              "relative aspect-square overflow-hidden rounded-lg border",
-              selectedImage === i && "ring-2 ring-primary"
-            )}
+            className="relative  aspect-[4/6] max-h-[500px] w-full overflow-hidden rounded-lg border border-gray-200"
           >
             <Image
               src={image}
-              alt={`Product thumbnail ${i + 1}`}
+              alt={`Product image ${i + 1}`}
               fill
               className="object-cover"
+              priority={i === 0}
             />
-          </button>
+          </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 }

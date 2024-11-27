@@ -16,17 +16,14 @@ interface PageProps {
 }
 
 export default function Page({ params }: PageProps) {
-  console.log(params.productId);
   const filterItems = products.find(
     (item: Product) => item.id === params.productId
   );
-  console.log(filterItems);
   return (
     <div className="container mx-auto px-4 py-6">
-      <div className="grid md:grid-cols-2 gap-8 mt-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-10 my-6">
         <ProductGallery images={filterItems?.images || []} />
-
-        <div className="space-y-6">
+        <div className="space-y-10">
           <div>
             <h1 className="text-2xl font-bold">{filterItems?.name}</h1>
             <div className="text-2xl mt-2">₹{filterItems?.price}</div>
@@ -40,7 +37,10 @@ export default function Page({ params }: PageProps) {
 
           <p className="text-gray-600">{filterItems?.description}</p>
 
-          <ProductVariants productSize={filterItems?.size || []} />
+          <ProductVariants
+            productColor={filterItems?.color || []}
+            productSize={filterItems?.size || []}
+          />
 
           <div className="flex flex-wrap gap-4">
             <Button className="flex-1 bg-primary text-white">Add cart</Button>
@@ -54,6 +54,7 @@ export default function Page({ params }: PageProps) {
           <ProductAccordion />
         </div>
       </div>
+
       <ReviewSection />
     </div>
   );

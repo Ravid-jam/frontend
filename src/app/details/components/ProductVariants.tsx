@@ -3,15 +3,26 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import React, { useState } from "react"; // Import useState for local state management
-import { ISizes } from "../../homepage/components/Product";
+import { IColors, ISizes } from "../../homepage/components/Product";
 
-export function ProductVariants({ productSize }: { productSize: ISizes[] }) {
+export function ProductVariants({
+  productSize,
+  productColor,
+}: {
+  productSize: ISizes[];
+  productColor: IColors[];
+}) {
   const [selectedSize, setSelectedSize] = useState(productSize[0]?.size);
+  const [selectedColor, setSelectedColor] = useState<string>(
+    productColor[0]?.name
+  );
 
   const handleSizeChange = (value: string) => {
     setSelectedSize(value);
   };
-
+  const handleColorChange = (color: string) => {
+    setSelectedColor(color);
+  };
   return (
     <div className="space-y-4">
       {productSize.length > 0 && (
@@ -52,6 +63,30 @@ export function ProductVariants({ productSize }: { productSize: ISizes[] }) {
           </div>
         </React.Fragment>
       )}
+      <div className="mb-4 md:mb-6">
+        <h3 className="text-sm font-medium mb-3">Color</h3>
+        <div className="flex flex-wrap gap-2">
+          {productColor.map((color) => (
+            <button
+              key={color.code}
+              type="button"
+              onClick={() => handleColorChange(color.name)}
+              className={`h-8 w-8 rounded-full border ring-2 ring-offset-1 transition duration-100 ${
+                selectedColor === color.name
+                  ? `border-${color.code} ring-${color.code}`
+                  : "border-gray-300 ring-transparent hover:ring-gray-200"
+              }`}
+              style={{ backgroundColor: color.code }}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <p className="text-sm">
+          Selected Color: <strong>{selectedColor}</strong>
+        </p>
+      </div>
     </div>
   );
 }
