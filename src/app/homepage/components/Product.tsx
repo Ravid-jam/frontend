@@ -2,70 +2,27 @@
 import { products } from "@/src/data/products";
 import Filter from "./Filter";
 import ProductItem from "./ProductItem";
-// Interface for RAM and ROM specifications
-interface RamAndRom {
-  id: number;
-  rom: string;
-  price: number;
-  stoke: number; // Note: "stoke" seems to be a typo; should be "stock"
+export interface ISizes {
+  id: string;
+  size: string;
+  stock: number;
 }
-
-// Interface for variant specifications
-interface Variant {
-  id: number;
-  color: string;
-  ramAndRom: RamAndRom[];
-  price: number;
-  stoke: number; // Note: "stoke" seems to be a typo; should be "stock"
-  images: string[];
+export interface IColors {
+  id: string;
+  name: string;
+  code: string;
 }
-
-// Interface for review specifications
-interface Review {
-  rating: number;
-  comment: string;
-  date: string; // ISO date string
-  reviewerName: string;
-  reviewerEmail: string;
-}
-
-// Interface for dimensions specifications
-interface Dimensions {
-  width: number;
-  height: number;
-  depth: number;
-}
-
 export interface Product {
   id: string;
-  title: string;
-  description: string;
   category: string;
-  subCategory: string;
-  price: number;
-  variants: Variant[];
-  discountPercentage: number | string; // Ensure this is a number
-  rating: number;
-  stock: number;
-  tags: string[];
+  name: string;
   brand: string;
-  sku: string;
-  weight: number;
-  dimensions: Dimensions;
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  reviews: Review[];
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-    barcode: string;
-    qrCode: string;
-  };
+  price: number;
+  rating: number;
   images: string[];
-  thumbnail: string;
+  size?: ISizes[];
+  description: string;
+  color?: IColors[];
 }
 
 export default function Product() {

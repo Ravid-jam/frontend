@@ -26,12 +26,12 @@ export default function ProductItem({ row }: Props) {
             className="text-base line-clamp-2  font-serif cursor-pointer hover:underline text-[#8A8AA2] w-auto"
             onClick={() => router.push(`/details/${row.id}`)}
           >
-            {row?.title}
+            {row?.name}
           </h3>
           <div className="">
             <p className="text-lg font-bold font-mono text-gray-600 line-through">
               <span className="text-lg">₹</span>
-              {row.discountPercentage}
+              {row.price}
             </p>
             <p className="text-[#353543] font-bold text-2xl font-mono">
               <span className="text-2xl">₹</span>
@@ -57,7 +57,7 @@ export default function ProductItem({ row }: Props) {
               href="#"
               className="sm:text-base text-sm font-medium font-sans text-gray-500 hover:underline dark:text-white"
             >
-              {row.reviews.length} Reviews
+              {row.rating} Reviews
             </a>
           </div>
         </div>
