@@ -4,9 +4,9 @@ export const products: Product[] = [
   {
     id: "1",
     category: "Cosmetics",
-    name: "Lipstick",
+    name: "Mamaearth Creamy Matte Long Stay Lipstick with Murumuru Butter and Vitamin E for 8-Hour Long Stay (Flakeproof & Non-Drying | Intense Color Payoff) - 4.2g (Rose Nude)",
     brand: "Maybelline",
-    price: 12.99,
+    price: 298,
     rating: 4.5,
     images: [
       "https://images.unsplash.com/photo-1613255348289-1407e4f2f980?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -185,10 +185,10 @@ export const products: Product[] = [
   {
     id: "8",
     category: "Clothes",
-    name: "Jeans",
+    name: "KETCH Men Skinny Fit Mid-Rise Jeans (Stretchable)",
     brand: "Levi's",
-    price: 49.99,
-    rating: 4.5,
+    price: 683,
+    rating: 2.5,
     images: [
       "https://plus.unsplash.com/premium_photo-1674828601362-afb73c907ebe?q=80&w=1953&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1604176354204-9268737828e4?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

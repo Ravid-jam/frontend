@@ -31,20 +31,17 @@ export default function Product() {
   const [maxPrice, setMaxPrice] = useState<number>(1000);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
-  // Function to handle the price filter change
   const handleFilterChange = (minPrice: number, maxPrice: number) => {
     setMinPrice(minPrice);
     setMaxPrice(maxPrice);
     applyFilters(minPrice, maxPrice, selectedCategory);
   };
 
-  // Function to handle category filter change
   const handleCategoryChange = (category: string) => {
     setSelectedCategory(category);
     applyFilters(minPrice, maxPrice, category);
   };
 
-  // Apply all filters (price and category)
   const applyFilters = (
     minPrice: number,
     maxPrice: number,
@@ -58,12 +55,11 @@ export default function Product() {
     setFilteredProducts(filtered);
   };
 
-  // Reset all filters
   const resetFilters = () => {
     setMinPrice(0);
     setMaxPrice(1000);
     setSelectedCategory("");
-    setFilteredProducts(products); // Reset the product list to the original one
+    setFilteredProducts(products);
   };
 
   return (

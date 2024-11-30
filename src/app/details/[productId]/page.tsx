@@ -23,15 +23,20 @@ export default function Page({ params }: PageProps) {
     <div className="container mx-auto px-4 py-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-20 md:gap-10 my-6">
         <ProductGallery images={filterItems?.images || []} />
-        <div className="space-y-10">
+        <div className="space-y-5">
           <div>
-            <h1 className="text-2xl font-bold">{filterItems?.name}</h1>
-            <div className="text-2xl mt-2">₹{filterItems?.price}</div>
-            <div className="flex items-center mt-2">
+            <h1 className="text-xl font-bold">{filterItems?.name}</h1>
+            <div className="flex items-center my-4">
               {[1, 2, 3, 4].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-primary text-primary" />
               ))}
               <Star className="w-5 h-5 text-muted-foreground" />
+            </div>
+            <div className="flex gap-3">
+              <div className="text-xl text-red-500 font-medium mt-2">25%</div>
+              <div className="text-2xl font-bold mt-2">
+                ₹{filterItems?.price}
+              </div>
             </div>
           </div>
 

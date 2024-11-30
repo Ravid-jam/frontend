@@ -11,18 +11,18 @@ import {
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { MountainIcon } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { Icons } from "../components/ui/icons";
 import { isMacOs } from "../lib/utils";
-import CartDrawers from "./CartDrawers";
 import { Kbd } from "./kbd";
 import MainMobileNav from "./MainMobileNav";
 import Navbar from "./Navbar";
 import Searchbar from "./Searchbar";
 
 export default function Header() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
-  const [openCart, setOpenCart] = useState(false);
   const [openMobileMenu, setOpenMobileMenu] = useState(false);
 
   React.useEffect(() => {
@@ -103,7 +103,7 @@ export default function Header() {
               variant="outline"
               size="icon"
               className="relative"
-              onClick={() => setOpenCart(!openCart)}
+              onClick={() => router.push("/cart")}
             >
               <Icons.cart className="size-4" aria-hidden="true" />
             </Button>
@@ -137,7 +137,6 @@ export default function Header() {
         </div>
       </header>
       <Searchbar open={open} handleOpen={() => setOpen(!open)} />
-      <CartDrawers open={openCart} handleOpen={() => setOpenCart(!openCart)} />
       <MainMobileNav
         open={openMobileMenu}
         handleOpen={() => setOpenMobileMenu(!openMobileMenu)}

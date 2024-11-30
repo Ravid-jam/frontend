@@ -23,9 +23,10 @@ export function ProductVariants({
   const handleColorChange = (color: string) => {
     setSelectedColor(color);
   };
+  console.log(productSize);
   return (
     <div className="space-y-4">
-      {productSize.length > 0 && (
+      {productSize.length >= 1 && (
         <React.Fragment>
           <div>
             <h3 className="text-sm font-medium mb-3">Size</h3>
@@ -63,30 +64,34 @@ export function ProductVariants({
           </div>
         </React.Fragment>
       )}
-      <div className="mb-4 md:mb-6">
-        <h3 className="text-sm font-medium mb-3">Color</h3>
-        <div className="flex flex-wrap gap-2">
-          {productColor.map((color) => (
-            <button
-              key={color.code}
-              type="button"
-              onClick={() => handleColorChange(color.name)}
-              className={`h-8 w-8 rounded-full border ring-2 ring-offset-1 transition duration-100 ${
-                selectedColor === color.name
-                  ? `border-${color.code} ring-${color.code}`
-                  : "border-gray-300 ring-transparent hover:ring-gray-200"
-              }`}
-              style={{ backgroundColor: color.code }}
-            />
-          ))}
-        </div>
-      </div>
+      {productColor.length >= 1 && (
+        <React.Fragment>
+          <div className="mb-4 md:mb-6">
+            <h3 className="text-sm font-medium mb-3">Color</h3>
+            <div className="flex flex-wrap gap-2">
+              {productColor.map((color) => (
+                <button
+                  key={color.code}
+                  type="button"
+                  onClick={() => handleColorChange(color.name)}
+                  className={`h-8 w-8 rounded-full border ring-2 ring-offset-1 transition duration-100 ${
+                    selectedColor === color.name
+                      ? `border-${color.code} ring-${color.code}`
+                      : "border-gray-300 ring-transparent hover:ring-gray-200"
+                  }`}
+                  style={{ backgroundColor: color.code }}
+                />
+              ))}
+            </div>
+          </div>
 
-      <div className="mt-4">
-        <p className="text-sm">
-          Selected Color: <strong>{selectedColor}</strong>
-        </p>
-      </div>
+          <div className="mt-4">
+            <p className="text-sm">
+              Selected Color: <strong>{selectedColor}</strong>
+            </p>
+          </div>
+        </React.Fragment>
+      )}
     </div>
   );
 }
