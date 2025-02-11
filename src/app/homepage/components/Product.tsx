@@ -63,10 +63,10 @@ export default function Product() {
   };
 
   return (
-    <div className="md:px-4 flex">
+    <div className="md:mx-10 flex">
       <Filter
         onFilterChange={handleFilterChange}
-        resetFilters={resetFilters} // Pass reset function to Filter
+        resetFilters={resetFilters}
         minPrice={minPrice}
         maxPrice={maxPrice}
         selectedCategory={selectedCategory}
@@ -83,7 +83,7 @@ export default function Product() {
             </p>
           </div>
         </div>
-        <div className="grid gap-3 2xl:grid-cols-6 xl:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:px-0 px-2">
+        <div className="grid gap-3 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 grid-cols-2 sm:px-0 px-2">
           {filteredProducts.map((row: Product, index: number) => (
             <div key={index}>
               <ProductItem row={row} />

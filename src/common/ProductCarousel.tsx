@@ -57,7 +57,7 @@ export default function ProductCarousel({
           >
             <img
               src={item}
-              className="h-full w-full rounded-t-2xl object-fill md:object-cover"
+              className="h-full w-full rounded-t-xl object-fill md:object-cover"
             />
           </div>
         ))}

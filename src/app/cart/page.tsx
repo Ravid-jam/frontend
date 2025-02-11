@@ -17,7 +17,7 @@ export default function Component() {
   const router = useRouter();
   return (
     <React.Fragment>
-      <main className="container  my-8  grid grid-cols-1 px-6 gap-8 md:grid-cols-[2fr_1fr]">
+      <main className="max-w-screen-xl mx-auto my-8  grid grid-cols-1 px-6 gap-8 md:grid-cols-[2fr_1fr]">
         <div className="">
           <h2 className="text-2xl font-bold font-serif leading-[1.1] md:text-3xl">
             Your Cart
