@@ -11,7 +11,6 @@ import {
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
 
-// Define a type for the content keys
 type ContentKeys = "profile" | "returns" | "cancellations" | "wishlist";
 
 const sidebarItems = [
@@ -92,7 +91,6 @@ const contentData: Record<ContentKeys, JSX.Element> = {
 };
 
 export default function AccountPage() {
-  // Use the ContentKeys type for activeItem
   const [activeItem, setActiveItem] = useState<ContentKeys>("profile");
 
   return (
@@ -119,7 +117,6 @@ export default function AccountPage() {
         </nav>
       </div>
 
-      {/* Content */}
       <div className="w-3/4 pl-8">
         <div className="bg-white p-8 rounded-lg shadow">
           {contentData[activeItem]}

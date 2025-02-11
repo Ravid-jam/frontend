@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { products } from "@/src/data/products";
 import { Heart, Star } from "lucide-react";
 import { Product } from "../../homepage/components/Product";
@@ -9,6 +8,7 @@ import { ProductGallery } from "../components/ProductGallery";
 import { ProductVariants } from "../components/ProductVariants";
 import { ReviewSection } from "../components/ReviewSection";
 import FilterProducts from "./components/FilterProducts";
+import { Button } from "@/src/common/Button";
 
 interface PageProps {
   params: {
@@ -50,9 +50,12 @@ export default function Page({ params }: PageProps) {
             />
 
             <div className="flex flex-wrap gap-4">
-              <Button className="flex-1 bg-primary text-white">Add cart</Button>
+              {/* <Button className="flex-1 bg-primary text-white">Add cart</Button>
               <Button className="flex-1 bg-primary text-white">Buy Now</Button>
 
+               */}
+              <Button className="flex-1 bg-primary text-white">Add cart</Button>
+              <Button className="flex-1 bg-primary text-white">Buy Now</Button>
               <Button variant="outline" size="icon">
                 <Heart className="h-4 w-4" />
               </Button>
