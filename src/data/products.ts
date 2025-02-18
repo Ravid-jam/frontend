@@ -1,6 +1,4 @@
-import { Product } from "../app/homepage/components/Product";
-
-export const products: Product[] = [
+export const products = [
   {
     id: "1",
     category: "Cosmetics",

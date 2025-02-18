@@ -2,11 +2,13 @@
 import Autoplay from "embla-carousel-autoplay";
 import Fade from "embla-carousel-fade";
 import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import EmbalmCarouselDotButton from "./EmbalmCarouselDotButton";
+import { IImage } from "../app/(main)/homepage/components/Product";
 
 type EmblaCarouselProps = {
-  slides?: string[];
+  slides?: IImage[];
   autoplayInterval?: number;
 };
 export default function ProductCarousel({
@@ -49,15 +51,19 @@ export default function ProductCarousel({
 
   return (
     <div className="embla relative" ref={emblaRef}>
-      <div className="embla__container h-44 md:h-52 cursor-pointer">
+      <div className="embla__container h-60 md:h-72 cursor-pointer">
         {slides?.map((item, index) => (
           <div
             className="embla__slide flex justify-center items-center"
             key={index}
           >
-            <img
-              src={item}
-              className="h-full w-full rounded-t-xl object-fill md:object-cover"
+            <Image
+              src={item.url}
+              alt="product image"
+              quality={100}
+              priority
+              fill
+              className="h-full w-full rounded-t-lg"
             />
           </div>
         ))}

@@ -9,12 +9,21 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { products } from "@/src/data/products";
 import { useRouter } from "next/navigation";
-import React, { SVGProps } from "react";
+import React, { SVGProps, useEffect, useState } from "react";
+import { Product } from "../homepage/components/Product";
 
 export default function Component() {
   const router = useRouter();
+  const [cartItems, setCartItems] = useState<Product[]>();
+
+  useEffect(() => {
+    const cartItems: Product[] = JSON.parse(
+      localStorage.getItem("AddToCart") || "[]"
+    );
+    setCartItems(cartItems);
+  }, []);
+  console.log(cartItems);
   return (
     <React.Fragment>
       <main className="max-w-screen-xl mx-auto my-8  grid grid-cols-1 px-6 gap-8 md:grid-cols-[2fr_1fr]">
@@ -23,13 +32,13 @@ export default function Component() {
             Your Cart
           </h2>
           <div className="mt-4 space-y-4">
-            {products.map((product, index) => (
+            {cartItems?.map((product: Product, index: number) => (
               <div
                 key={index}
                 className="flex items-center gap-4 rounded-lg border bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-950"
               >
                 <img
-                  src={product.images[0]}
+                  src={product.images[0]?.url}
                   width={80}
                   height={80}
                   alt="Product Image"
@@ -37,7 +46,9 @@ export default function Component() {
                   style={{ aspectRatio: "80/80", objectFit: "cover" }}
                 />
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium">Acme Headphones</h3>
+                  <h3 className="text-lg font-medium  line-clamp-1">
+                    {product?.title}
+                  </h3>
                   <p className="text-gray-500 dark:text-gray-400">
                     Black, Large
                   </p>

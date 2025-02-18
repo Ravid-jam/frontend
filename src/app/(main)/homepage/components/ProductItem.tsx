@@ -1,10 +1,10 @@
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import AddToCart from "@/src/common/AddToCart";
 import ProductCarousel from "@/src/common/ProductCarousel";
 import { useRouter } from "next/navigation";
 import { Product } from "./Product";
@@ -17,23 +17,23 @@ export default function ProductItem({ row }: Props) {
   const router = useRouter();
 
   return (
-    <Card className="p-0">
+    <Card className="p-0 h-full">
       <CardHeader className="p-0 h-22">
         <ProductCarousel slides={row.images} />
       </CardHeader>
       <CardContent className="py-1 px-2">
         <h3
-          className="text-base font-serif text-[#8A8AA2] cursor-pointer hover:underline line-clamp-2"
-          onClick={() => router.push(`/details/${row.id}`)}
+          className="text-base font-serif text-[#8A8AA2] cursor-pointer hover:underline line-clamp-2 h-12"
+          onClick={() => router.push(`/details/${row.slug}`)}
         >
-          {row?.name}
+          {row?.title}
         </h3>
         <div>
           <p className="text-lg font-bold font-mono text-gray-600 line-through">
             ₹{row.price}
           </p>
           <p className="text-2xl font-bold font-mono text-[#353543]">
-            ₹{row.price}
+            ₹{row.totalPrice}
           </p>
         </div>
         <div className="flex items-center flex-wrap md:flex-nowrap gap-2 my-3">
@@ -57,8 +57,8 @@ export default function ProductItem({ row }: Props) {
           </a>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between gap-x-2 pt-1 px-2 pb-3">
-        <Button className="w-full bg-[#004AAC]">Add To Cart</Button>
+      <CardFooter className="flex flex-col justify-end px-2 pb-3">
+        <AddToCart product={row} />
       </CardFooter>
     </Card>
   );

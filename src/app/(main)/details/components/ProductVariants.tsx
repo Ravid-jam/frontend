@@ -3,27 +3,22 @@
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import React, { useState } from "react"; // Import useState for local state management
-import { IColors, ISizes } from "../../homepage/components/Product";
+import { Size } from "../../homepage/components/Product";
 
-export function ProductVariants({
-  productSize,
-  productColor,
-}: {
-  productSize: ISizes[];
-  productColor: IColors[];
-}) {
-  const [selectedSize, setSelectedSize] = useState(productSize[0]?.size);
-  const [selectedColor, setSelectedColor] = useState<string>(
-    productColor[0]?.name
+export function ProductVariants({ productSize }: { productSize: Size[] }) {
+  const [selectedSize, setSelectedSize] = useState(
+    productSize[0]?.name.sizeName
   );
+  // const [selectedColor, setSelectedColor] = useState<string>(
+  //   productColor.colorName
+  // );
 
   const handleSizeChange = (value: string) => {
     setSelectedSize(value);
   };
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
-  console.log(productSize);
+  // const handleColorChange = (color: string) => {
+  //   setSelectedColor(color);
+  // };
   return (
     <div className="space-y-4">
       {productSize.length >= 1 && (
@@ -31,26 +26,26 @@ export function ProductVariants({
           <div>
             <h3 className="text-sm font-medium mb-3">Size</h3>
             <RadioGroup
-              defaultValue={productSize[0]?.size}
+              defaultValue={productSize[0]?.name?.sizeName}
               onValueChange={handleSizeChange}
               className="flex flex-wrap gap-2"
             >
               {productSize.map((size) => (
-                <div key={size.size} className="flex items-center space-x-2">
+                <div key={size._id} className="flex items-center space-x-2">
                   <RadioGroupItem
-                    value={size.size}
-                    id={`size-${size.size}`}
+                    value={size.name.sizeName}
+                    id={`size-${size._id}`}
                     className="peer hidden"
                   />
                   <Label
-                    htmlFor={`size-${size.size}`}
+                    htmlFor={`size-${size._id}`}
                     className={`px-3 py-2 border rounded-md cursor-pointer ${
-                      selectedSize == size.size
+                      selectedSize == size.name.sizeName
                         ? "bg-primary text-white"
                         : "bg-white text-black"
                     } peer-checked:text-white`}
                   >
-                    {size.size}
+                    {size.name.sizeName}
                   </Label>
                 </div>
               ))}
@@ -64,22 +59,22 @@ export function ProductVariants({
           </div>
         </React.Fragment>
       )}
-      {productColor.length >= 1 && (
+      {/* {productColor.length >= 1 && (
         <React.Fragment>
           <div className="mb-4 md:mb-6">
             <h3 className="text-sm font-medium mb-3">Color</h3>
             <div className="flex flex-wrap gap-2">
               {productColor.map((color) => (
                 <button
-                  key={color.code}
+                  key={color._id}
                   type="button"
-                  onClick={() => handleColorChange(color.name)}
+                  onClick={() => handleColorChange(color.colorName)}
                   className={`h-8 w-8 rounded-full border ring-2 ring-offset-1 transition duration-100 ${
-                    selectedColor === color.name
-                      ? `border-${color.code} ring-${color.code}`
+                    selectedColor === color.colorName
+                      ? `border-${color.colorCode} ring-${color.colorCode}`
                       : "border-gray-300 ring-transparent hover:ring-gray-200"
                   }`}
-                  style={{ backgroundColor: color.code }}
+                  style={{ backgroundColor: color.colorCode }}
                 />
               ))}
             </div>
@@ -91,7 +86,7 @@ export function ProductVariants({
             </p>
           </div>
         </React.Fragment>
-      )}
+      )} */}
     </div>
   );
 }

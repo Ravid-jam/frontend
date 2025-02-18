@@ -99,21 +99,23 @@ export default function CheckoutPage() {
 
             <div className="space-y-6">
               <div className="h-80 overflow-auto space-y-6 p-3">
-                {products.map((product) => (
-                  <div key={product.id} className="flex items-center gap-4 ">
+                {products?.map((product) => (
+                  <div key={product?.id} className="flex items-center gap-4 ">
                     <Image
-                      src={product.images[0]}
-                      alt={product.name}
+                      src={product?.images[0]}
+                      alt={product?.id}
                       height={100}
                       width={100}
                       className="h-20 w-20 rounded-lg object-cover"
                     />
                     <div className="flex-1 space-y-1 ">
                       <h3 className="font-medium truncate w-64">
-                        {product.name}
+                        {product?.name}
                       </h3>
 
-                      <p className="font-medium">₹{product.price.toFixed(2)}</p>
+                      <p className="font-medium">
+                        ₹{product?.price.toFixed(2)}
+                      </p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Button variant="outline" size="icon">

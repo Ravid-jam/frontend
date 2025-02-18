@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import Slider from "react-slick";
+import { IImage } from "../../homepage/components/Product";
 
 interface ProductGalleryProps {
-  images: string[];
+  images: IImage[];
 }
 
 export function ProductGallery({ images }: ProductGalleryProps) {
@@ -15,14 +16,14 @@ export function ProductGallery({ images }: ProductGalleryProps) {
     dots: true,
     customPaging: (i: number) => (
       <div
-        className={`relative h-14 w-14 overflow-hidden rounded-lg border transition-all duration-300 ${
+        className={`relative h-24 w-24 overflow-hidden rounded-lg border transition-all duration-300 ${
           selectedImage === i
             ? "border-primary ring-2 ring-primary"
             : "border-gray-300"
         }`}
       >
         <Image
-          src={images[i]}
+          src={images[i]?.url}
           alt={`Thumbnail ${i + 1}`}
           fill
           className="object-cover"
@@ -35,6 +36,8 @@ export function ProductGallery({ images }: ProductGalleryProps) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
     afterChange: (current: number) => setSelectedImage(current),
   };
 
@@ -44,13 +47,13 @@ export function ProductGallery({ images }: ProductGalleryProps) {
         {images.map((image, i) => (
           <div
             key={i}
-            className="relative  aspect-[4/6] max-h-[500px] w-full overflow-hidden rounded-lg border border-gray-200"
+            className="relative  aspect-[4/6] max-h-[600px] w-full overflow-hidden border border-gray-200"
           >
             <Image
-              src={image}
+              src={image.url}
               alt={`Product image ${i + 1}`}
               fill
-              className="object-cover"
+              className="object-contain"
               priority={i === 0}
             />
           </div>

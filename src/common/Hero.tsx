@@ -66,7 +66,7 @@ export default function Hero({ autoplayInterval = 6000 }: EmblaCarouselProps) {
 
   return (
     <div
-      className="embla relative h-64 md:h-80 lg:h-[450px] xl:h-auto"
+      className="embla relative h-64 md:h-80 lg:h-[300px] xl:h-[500px]"
       ref={emblaRef}
     >
       <div className="embla__container h-full ">
@@ -75,7 +75,7 @@ export default function Hero({ autoplayInterval = 6000 }: EmblaCarouselProps) {
             className="embla__slide flex justify-center items-center"
             key={index}
           >
-            <img src={item.img} className=" h-full w-full object-cover" />
+            <img src={item.img} className="h-full w-full object-fill" />
           </div>
         ))}
       </div>
